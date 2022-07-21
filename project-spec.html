@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Project Reflection</title>
+</head>
+
+<body>
+    <h2>Othello 4P Project</h2>
+    <h4>By: Avi Feldman</h4>
+    <p><a href=http://apps.introcs.com/avif/hack110/othello.html>Project Link</a> </p> 
+    <ul>
+        <h4>Project Description</h4>
+        <p>Othello is normally a 2 player game where the goal of the game is to 
+            gain possession of the board by having more pieces on it. The only way 
+            to take pieces owned by your opponent is to place a piece where your
+            opponent's pieces lie in between your placed piece and piece that already
+            exists on the board. The game ends when either the board is filled, or no 
+            player can make a move. This version of the game is a 4 player version.
+            Similar multiplayer versions of Othello, such as Rolit and Bob-omb Reverse,
+            a minigame from New Super Mario Bros. Othello as a 2 player game is played
+            competitively, more can be found <a href=https://www.worldothello.org/>here.</a></p>
+    </ul>
+        <ul>
+            <h4>Programming Concepts</h4>
+            <p>
+                The frame of the project was a 2-D array of a Tile class.
+                By combining these two ideas, It becomes trivial to do things such as changing the
+                color of a specific tile on the board. By creating sprites associated with the Tiles
+                and setting those sprites to become buttons, it was possible to create a new sprite
+                in the exact position of the old sprite whenever a tile needed to be rewritten. The three
+                methods used in the Tile class, move, place, and setColor worked together to make a move,
+                place a piece, and set the color of the Tile.
+            </p>
+            <p>
+                The game would not be fun if it was just about placing pieces, however. The game of
+                Othello requires some logic, as legal moves are only moves where pieces can be taken
+                by having them in between a pre-existing piece and the placed piece. In class, for the
+                Connect 4 module (which came after the coding of this project), we checked every single
+                piece iteratively, checked every single direction iteratively, and every path
+                recursively. Only the piece placed needed to be checked for this project, since no move
+                is legal without the taken pieces originating from the placed piece, but the rest is
+                quite similar.
+            </p>
+        </ul>
+        <ul>
+            <h4>Challenges Overcome</h4>
+            <p>
+                The largest hurdle came from my complete lack of knowledge as to anything
+                pixi.js. At first, I was so confused as to why the sprite that I had pulled
+                up would only show up once. As it turns out, sprites themselves can only be
+                used once. The workaround for this was through extracting the texture, rather
+                than the sprite, and making a new sprite out of that texture every time a piece
+                was placed or swapped. Pulling the sprite from the folder worked, as well, but
+                I was worried about possible lag due to the large amounts of recursion in 
+                the program, even though that ended up being a non-issue. Most of the issues coming 
+                from a lack of knowledge on pixi.js were not massive problems, however, as 
+                the website is well documented and covers most everything.
+            </p>
+            <p>
+                Another challenge was in implementation of the logic, as I wasn't sure as how 
+                to go about reasoning it out. I figured it out at 2:30AMish, so it took a while.
+                The lateness of my coding turned out to be a problem though, as it resulted in 
+                the bug that took the most amount of time to fix, where the program would treat
+                most tiles placed after the initial board state as nonexistent. As it turned out,
+                after hours of debugging, the entire bug was the result of one wrong variable.
+            </p>
+            <p>
+                As most of the code is merely logic, it makes sense that the most amount of problems 
+                stem from the logic itself, especially when the implementation is not too different
+                than examples seen in the game development workshop near the beginning of HACK110. 
+                The logic is quite complex, including quite a bit of recursion. Here, using the 
+                console.log function for debugging was pivotal in understanding why problems arose.
+                For instance, the most useful piece of information for me lied in the function that 
+                detected whether pieces would be taken in a single direction. For each tile 
+                selected, it would be run 8 times, giving the turn number, position of the tile, 
+                and direction of detection. It would also give off one of three conditions: Condition 
+                1 - out of bounds ; Condition 2 - empty tile detected ; Condition 3 - working direction.
+                These four pieces of information were critical in determining what logic wasn't working
+                as intended.
+            </p>
+        </ul>
+        <ul>
+            <h4>What was Achieved / What Remains</h4>
+            <p>
+                A functioning version of the game exists. No illegal moves can be taken, and
+                all legal moves result in all surrounded enemy pieces being taken, and no more. 
+                All legal moves are clearly shown for ease of use.
+                There is also a game end condition, where the program declares the victor 
+                and final points, while not being too intrusive.
+            </p>
+            <p>
+                That being said, this is by no means the optimal version of the project. There
+                are 3 things that I would still like to have done. 
+                <li>
+                    First, and most importantly,
+                there's no indicator as to whose turn it is. I really wanted to be able to make
+                the cursor change color based on whose turn it was, but the implementation of 
+                cursor changing on the official pixi.js website was failing, and all the 
+                websites I found that even brought up the subject had extremely dense code full
+                of things that neither I nor VSCode could quite figure out what the implementation
+                errors were. Given more time, I would create a background radiance of the turn
+                color, and perhaps I could try to change the background of the webpage based on
+                whose turn it was (though that would be uncomfortable whenever it was yellow's
+                turn).
+            </li>
+                <li>
+                    Next, I wanted to implement a secondary button below the application
+                    to allow for 2 player Othello, since that is the norm. Another button 
+                    that would be effective would be a "reset" button, so that refreshing is
+                    not necessary to play again.
+                </li>
+                <li>
+                    Finally, some background would be nice. As it is, the application is thrown
+                    in the top left of the screen on a white background, and using some CSS
+                    in order to make a non-white background and center the game (and any 
+                    buttons) would make the program feel nicer to the user.
+                </li>
+            </p>
+        </ul>
+</body>
+
+</html>
